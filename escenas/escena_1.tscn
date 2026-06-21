@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b2rbr5hthxmem"]
+
+[ext_resource type="PackedScene" uid="uid://dkaqhdmxo3vq0" path="res://escenas/player.tscn" id="1_4j4id"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4j4id"]
+
+[node name="Escena 1" type="Node2D" unique_id=325900778]
+
+[node name="Player" parent="." unique_id=1481954843 instance=ExtResource("1_4j4id")]
+position = Vector2(31, -25)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1011465526]
+zoom = Vector2(4, 4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1570756553]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=134846887]
+position = Vector2(0, 41)
+shape = SubResource("WorldBoundaryShape2D_4j4id")
