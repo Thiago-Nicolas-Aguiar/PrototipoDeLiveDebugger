@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dkaqhdmxo3vq0" path="res://escenas/player.tscn" id="1_4j4id"]
 [ext_resource type="Texture2D" uid="uid://t60iqatunocm" path="res://recursos/sprites/world_tileset.png" id="2_u2yvm"]
 [ext_resource type="PackedScene" uid="uid://dmh87ejpbxaqr" path="res://escenas/plataforma.tscn" id="3_0mg33"]
+[ext_resource type="PackedScene" uid="uid://dj2tkh5dic1ln" path="res://escenas/moneda.tscn" id="4_rjdl1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0mg33"]
 texture = ExtResource("2_u2yvm")
@@ -229,3 +230,15 @@ position = Vector2(384, 53)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="plataforma2" unique_id=1397059604]
 libraries/ = SubResource("AnimationLibrary_meahv")
 autoplay = &"Movimiento"
+
+[node name="Moneda" parent="." unique_id=1169030187 instance=ExtResource("4_rjdl1")]
+position = Vector2(88, 74)
+
+[node name="Moneda4" parent="." unique_id=2053819495 instance=ExtResource("4_rjdl1")]
+position = Vector2(104, -38)
+
+[node name="Moneda2" parent="." unique_id=1479509143 instance=ExtResource("4_rjdl1")]
+position = Vector2(216, 74)
+
+[node name="Moneda3" parent="." unique_id=450748126 instance=ExtResource("4_rjdl1")]
+position = Vector2(232, 74)
