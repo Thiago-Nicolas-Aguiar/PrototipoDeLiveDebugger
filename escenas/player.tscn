@@ -200,10 +200,8 @@ script = ExtResource("1_kkt6c")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=719603631]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"Jump"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=81411747]
 position = Vector2(0, -6)

@@ -3,11 +3,29 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0 
-# Debe ser negativa para que el salto vaya en contra de la gravedad
+
+# No quiero correr, ruedo como en dark souls
+const DASH_SPEED = 300
+const DASH_COOLDOWN = 1.0
+const DASH_DURATION = 0.2
+
+var ESTOY_DASHEANDO: bool = false
+var PUEDO_DASHEAR: bool = true
+
+
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
+
+		# Dash
+	if Input.is_action_pressed("Dash"):
+		comenzar_dash()
+	
+	if ESTOY_DASHEANDO:
+		move_and_slide()
+		return
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -42,3 +60,28 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func comenzar_dash():
+	var direction := Input.get_axis("MoverIzquierda", "MoverDerecha")
+
+	if not PUEDO_DASHEAR or ESTOY_DASHEANDO:
+		return 
+
+	ESTOY_DASHEANDO = true
+	PUEDO_DASHEAR = false
+	
+	velocity.y = 0 
+
+	if direction != 0:
+		velocity.x = direction * DASH_SPEED
+	else:
+
+		var mirando = -1 if $AnimatedSprite2D.flip_h else 1
+		velocity.x = mirando * DASH_SPEED
+
+	await get_tree().create_timer(DASH_DURATION).timeout
+	ESTOY_DASHEANDO = false
+
+	await get_tree().create_timer(DASH_COOLDOWN).timeout
+	PUEDO_DASHEAR = true
+
